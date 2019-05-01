@@ -1,30 +1,3 @@
 // TODO: write code here
 
 console.log('app.js bundled');
-
-export function getBuffer() {
-  const data = '{"data":{"user":{"id":1,"name":"Hitman","level":10}}}';
-  return ((input) => {
-    const buffer = new ArrayBuffer(data.length * 2);
-    const bufferView = new Uint16Array(buffer);
-    for (let i = 0; i < input.length; i++) {
-      bufferView[i] = input.charCodeAt(i);
-    }
-    return buffer;
-  })(data);
-}
-
-export class ArrayBufferConverter {
-  load(buffer) {
-    this.buffer = buffer;
-  }
-
-  toString() {
-    let string = '';
-    const bufferView = new Uint16Array(this.buffer);
-    for (let i = 0; i < bufferView.length; i += 1) {
-      string += String.fromCharCode(bufferView[i]);
-    }
-    return string;
-  }
-}
